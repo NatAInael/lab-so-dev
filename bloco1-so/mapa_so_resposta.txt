@@ -226,4 +226,4 @@ init.d                       qemu-ga
 # e que rotinas de dispositivo traduziam comandos.
 # Em qual diretório do Linux você reconhece essa função?
 
-Resposta:
+Resposta: no diretorio kernel ou seja /proc
