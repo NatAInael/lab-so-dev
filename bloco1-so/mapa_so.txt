@@ -7,26 +7,26 @@
 # explicando a função do diretório com suas próprias palavras.
 
 /proc
- mostra processos que já foram criados e encerrados
+
 /proc/cpuinfo
-descreve sua cpu
+
   
 
 /proc/meminfo
- da detalhes sobre a memória, como capacidade total, disponível e sem uso, ativa, etc.
+ 
 
 
 /proc/uptime
- mostra o tempo em que o sistema foi ligado e o tempo que o sistema ficou ocioso
+
 
 
 /bin
-  lista todos  os executáveis no diretório, são os comandos básicos do sistema
+  
 /dev
-  Cada item aqui  representa um dispositivo de hardware
+  
 
 /etc
-  O diretório /etc contém os arquivos de configuração de praticamente todo programa instalado no sistema.
+  
 
 
 # PARTE B — Questão de reflexão
@@ -34,4 +34,4 @@ descreve sua cpu
 # e que rotinas de dispositivo traduziam comandos.
 # Em qual diretório do Linux você reconhece essa função?
 
-Resposta: no diretório do kernel, ou /proc
+Resposta:
