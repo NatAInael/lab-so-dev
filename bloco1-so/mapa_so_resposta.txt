@@ -212,3 +212,10 @@ ImageMagick-6                protocols              zprofile
 incron.conf                  pulse                  zshenv
 incron.d                     qemu                   zshrc
 init.d                       qemu-ga
+
+# PARTE B — Questão de reflexão
+# A apresentação mostrou que o supervisor controlava o acesso a I/O
+# e que rotinas de dispositivo traduziam comandos.
+# Em qual diretório do Linux você reconhece essa função?
+
+Resposta:
