@@ -10,7 +10,8 @@
 # Dê um exemplo concreto do que você usou nesta atividade.
 
 Resposta:
-
+No shell moderno, a atribuição de arquivos e dispositivos é feita através de **redirecionamentos e pipes**, que conectam programas a arquivos ou outros processos.  
+Exemplo usado: `./relatorio.sh > saida.txt` redireciona a saída do script para o arquivo `saida.txt`, de forma análoga a associar um job a um dispositivo no JCL.
 
 # ─────────────────────────────────────────────────────
 
@@ -22,10 +23,11 @@ Resposta:
 #    que não mudou?
 
 Resposta 1:
-
+O make verifica **timestamps** dos arquivos fonte e dos arquivos gerados (objetos/executáveis). Se o arquivo objeto está mais recente que o fonte correspondente, o make entende que a recompilação não é necessária, garantindo que cada etapa só seja executada se houver mudanças.
 
 # 2. O monitor unificava "supervisor, carregador e rotinas de I/O
 #    sob uma interface textual". O que o Makefile unifica no fluxo
 #    de desenvolvimento moderno?
 
 Resposta 2:
+O Makefile unifica todas as etapas do fluxo de compilação e linkedição, como **compilação de múltiplos arquivos, execução de scripts auxiliares e geração de relatórios**, oferecendo uma interface única e automatizada para gerenciar o projeto, assim como o monitor histórico fazia para jobs no passado.
