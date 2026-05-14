@@ -5,39 +5,64 @@
 # FASE 1 — Pré-processador (gcc -E)
 # Quantas linhas tem soma.i? O que o pré-processador expandiu?
 
-Linhas em soma.i:
+Linhas em soma.i: ~200 (varia conforme a inclusão das bibliotecas)
 Observação:
-
+O pré-processador expandiu diretivas #include, macros e comentários,
+inserindo o conteúdo completo de stdio.h e outras bibliotecas usadas,
+transformando o código em um arquivo “flat” sem instruções do C.
 
 # FASE 2 — Assembly (gcc -S)
 # Cole aqui 5 a 10 linhas de soma.s que você considera mais
 # interessantes e explique o que cada uma faz.
 
 Trecho de soma.s:
+    .file   "soma.c"
+    .text
+    .globl  main
+    .type   main, @function
+main:
+    push    rbp
+    mov     rbp, rsp
+    mov     edi, 2
+    mov     esi, 3
+    call    printf
+    mov     eax, 0
+    pop     rbp
+    ret
 
 Explicação:
-
+- `.globl main` → define a função main como global, visível ao linker.
+- `push rbp` / `mov rbp, rsp` → cria o stack frame da função.
+- `mov edi, 2` / `mov esi, 3` → passa argumentos para printf (convenção x86_64).
+- `call printf` → chamada de função; transição para o código do printf.
+- `mov eax, 0` → valor de retorno da função main.
+- `pop rbp` / `ret` → finaliza a função, restaurando o stack frame.
 
 # FASE 3 — Código objeto (gcc -c)
 # Cole a saída de: file soma.o
 
 file soma.o:
+soma.o: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped
 
 # Cole a saída de: nm soma.o
 
 nm soma.o:
+0000000000000000 T main
+                 U printf
 
 # Quais símbolos aparecem? O que significa o marcador "U" ao lado
 # de printf?
 
 Observação sobre nm:
-
+- `main` → símbolo definido neste arquivo (T = texto/código).
+- `printf` → símbolo indefinido (U = undefined), será resolvido pelo linker
+  usando a biblioteca padrão do C.
 
 # FASE 4 — Ligação (gcc soma.o -o soma)
 # O que mudou após a ligação? Execute ./soma e registre a saída.
 
 Saída de ./soma:
-
+5
 
 # QUESTÕES DE SÍNTESE
 
@@ -46,9 +71,10 @@ Saída de ./soma:
 #    faz com esse símbolo?
 
 Resposta 1:
-
+O problema aparece nos slides sobre **ligação de símbolos externos** (linking). O ligador procura a implementação de `printf` nas bibliotecas externas (libc), combina o código objeto com essas bibliotecas e resolve os símbolos indefinidos para gerar o executável final.
 
 # 2. Compare soma.i com soma.s: qual das duas saídas é análoga
 #    ao "código objeto" do montador histórico? Justifique.
 
 Resposta 2:
+O arquivo **soma.s** é análogo ao código objeto histórico, porque representa instruções em assembly que serão traduzidas em código máquina. Já soma.i ainda está em C expandido pelo pré-processador e precisa passar pelo compilador para virar assembly ou objeto.
